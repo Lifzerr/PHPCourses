@@ -1,0 +1,7 @@
+a | 12 | a | a 
+b | 20 | b | 350
+ribou | 56 | a@a.cil | 46430
+ribou | 56 | a@a.cil | 46430
+ribou | 56 | a@a.cil | 46430
+ribou | 56 | a@a.cil | 46430
+aha | 12 | a@a | 131
