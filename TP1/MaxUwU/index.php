@@ -70,11 +70,12 @@
     } else {
         echo "Impossible d'ouvrir le fichier.";
     }
+        
     
-
+    /****************************/
     // Exercice 3 - V2
     // Ouvrir le fichier restos.csv en mode lecture
-    $file = fopen("restos.csv", "r");
+    /*$file = fopen("restos.csv", "r");
 
     // Vérifier que le fichier est bien ouvert
     if ($file !== false) {
@@ -101,7 +102,9 @@
         echo "Impossible d'ouvrir le fichier.";
     }*/
 
-    
+
+    /****************************/
+    /* Exercice 4 - version simple
     // Fichier contenant le compteur
     $filename = "compteur.txt";
 
@@ -120,7 +123,7 @@
     echo "Nombre de visites : " . $compteur;
 
     // Écrire le nouveau compteur dans le fichier
-    file_put_contents($filename, $compteur);
+    file_put_contents($filename, $compteur); */
     ?>
 
     

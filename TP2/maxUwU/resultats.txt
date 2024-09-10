@@ -1,0 +1,3 @@
+Name: maxime | Age: 15 | Email: madadg@gmail.xp | Donation Amount: 50
+Name: test | Age: 1 | Email: test@test.de | Donation Amount: 82
+Name: maxime | Age: 2 | Email: mbourciez@test.fr | Donation Amount: 60
