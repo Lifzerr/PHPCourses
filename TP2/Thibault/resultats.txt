@@ -1,7 +1,5 @@
-a | 12 | a | a 
-b | 20 | b | 350
-ribou | 56 | a@a.cil | 46430
-ribou | 56 | a@a.cil | 46430
-ribou | 56 | a@a.cil | 46430
-ribou | 56 | a@a.cil | 46430
-aha | 12 | a@a | 131
+maxime | 19 | maxime.bz@gmail.com | 10
+maxime | 19 | maxime.bz@gmail.com | 10
+backou | 13 | backou.bz@gmail.com | 150
+backou | 13 | backou.bz@gmail.com | 150
+ok | 12 | ok.ok@yahoo.com | 130

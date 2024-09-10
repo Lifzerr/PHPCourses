@@ -14,7 +14,7 @@
     //echo "Hello World <br>";
     
     //Exercice 2
-    /*$_IP_Adress = $_SERVER["REMOTE_ADDR"];
+    /*$_IP_Adress = $_SERVER['REMOTE_ADDR'];
     echo $_IP_Adress;
 
     echo "<br>";
