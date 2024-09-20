@@ -13,6 +13,11 @@
         $pass= "roose"; // mp
         $nomtable= "bourse"; /* Connection bdd */
 
+        $largeur = 400;
+        $hauteur = 600;
+        $nbIndicesBD = 60;
+        $image = ImageCreateTrueColor($largeur, $hauteur);
+
         $link=mysqli_connect($host,$user,$pass,$bdd) or die( "Impossible de se connecter à la base de données");
 
         $requete = "SELECT * FROM $nomtable";
@@ -23,15 +28,20 @@
             exit();
         }
 
-        header('Content-type : image/jpeg');
+        $idImage = ImageCreateTrueColor($largeur, $hauteur);
+        $bgColor = imagecolorallocate($idImage, 255, 128, 0);
+        imageFill($idImage, 0, 0, $bgColor);
+
+        // Valeurs numériques pour les dessins
         $numberRows = mysqli_num_rows($resultat);
-        $largeur = 400;
-        $hauteur = 600;
-        $nbIndicesBD = 60;
+        $pixelParLigne = round($largeur / $numberRows);
+        $pixelParColonne = round($hauteur / $nbIndicesBD);
 
-        $lineWidth = ($largeur - 4)/ $numberRows;
-
-        $image = ImageCreateTrueColor($largeur, $hauteur);
+        // Valeurs de départ 
+        $xStart = 0;
+        $xEnd = 0;
+        $yDebut = 0;
+        $yFin = 0;
         
         // Parcours des résultats
         while($data = mysqli_fetch_assoc($resultat))
@@ -39,9 +49,20 @@
             $indice = $data['indice'];
             $ville = $data['ville'];
 
-            
+            // Envoyer les x & y de fin la ou ils doivent etre
+            $yFin = round($pixelParColonne * $indice, 0);
+            $xEnd += $pixelParLigne;
 
-            switch ($ch2) {
+            // Récupérer les emplacements exacts
+            $xSupGauche = $xStart;
+            $ySupGauche = $hauteur - $yDebut;
+            $xInfDroit = $xEnd;
+            $yInfDroit = $hauteur - $yFin;
+
+            // Nom de la ville 
+            $nomVille = $ville . ' - ' . $indice;
+
+            switch ($ville) {
                 case 'NY':
                     $couleur = imagecolorallocate($idImage, 255, 0, 0); // Rouge
                     break;
@@ -71,11 +92,24 @@
                     break;
             }
 
-            echo $ville . '  ' . $indice . '<br>'; 
+            imageFilledRectangle($idImage, $xSupGauche, $ySupGauche, $xInfDroit, $yInfDroit, $couleur);
+
+            $couleurEcriture = imagecolorallocate($idImage, 255, 0, 0); // Noir
+            imageStringUp($idImage, 3, $xSupGauche + 15, $yInfDroit - 20, $nomVille, $couleurEcriture);
+            $xStart = $xEnd;
         }
 
+        // sauvegarde de l'image
+        $path = 'img/image.jpeg';
+        if(!file_exists('img')){
+            mkdir('img', 0777, true);
+        }
+
+        imageJpeg($idImage, $path);
         mysqli_close($link);
         ImageDestroy($image);
+
+        echo "<img src='img/image.jpeg'>";
 
     ?>
 </body>
