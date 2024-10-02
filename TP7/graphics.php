@@ -1,5 +1,11 @@
-<?php session_start(); ?>
-
+<?php
+    session_start();
+    
+    if(!isset($_SESSION['login']) || !isset($_SESSION['pwd'])) {
+        header('Location: ./login.html');
+        exit(); // Toujours ajouter exit après un header pour s'assurer que le script s'arrête
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +15,11 @@
     <title>Document</title>
 </head>
 <body>
+
+
+
     <?php
+        
 
         $largeur = 400;
         $hauteur = 600;
@@ -108,10 +118,10 @@
         mysqli_close($link);
         ImageDestroy($image);
 
-        echo "<img src='img/image.jpeg'>";
+        echo "<img src='./img/image.jpeg'>";
 
         echo "<a href='logout.php'> Déconnexion </a>";
 
     ?>
 </body>
-</html>
+</html> Pourquoi j'ai une erreur à la ligne 120 ?
